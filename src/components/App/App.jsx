@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { ContactList } from './components/ContactList/ContactList';
-import { ContactForm } from './components/ContactForm/ContactForm';
-import { Filter } from './components/Filter/Filter';
+import {
+  ContactsTitle,
+  ContactContainer,
+  PhonebookTitle,
+  PhonebookContainer,
+  WrapperTask,
+} from './Styled.App';
+import { ContactList } from '../ContactList/ContactList';
+import { ContactForm } from '../ContactForm/ContactForm';
+import { Filter } from '../Filter/Filter';
 export class App extends Component {
   state = {
     contacts: [
@@ -55,7 +62,7 @@ export class App extends Component {
   render() {
     const filteredSearch = this.contactFilter();
     return (
-      <Wrapper>
+      <WrapperTask>
         <PhonebookContainer>
           <PhonebookTitle>Phonebook</PhonebookTitle>
           <ContactForm onSubmit={this.addContact} />
@@ -68,31 +75,7 @@ export class App extends Component {
             onDelete={this.deleteContact}
           />
         </ContactContainer>
-      </Wrapper>
+      </WrapperTask>
     );
   }
 }
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const PhonebookContainer = styled.div`
-  flex-direction: column;
-`;
-
-const PhonebookTitle = styled.h1`
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 30px;
-`;
-
-const ContactContainer = styled.div`
-  flex-direction: column;
-  width: 400px;
-`;
-
-const ContactsTitle = styled.h2`
-  text-align: center;
-  margin-top: 50px;
-`;
